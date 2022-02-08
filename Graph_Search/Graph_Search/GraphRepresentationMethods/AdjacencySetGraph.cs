@@ -15,7 +15,7 @@ public class AdjacencySetGraph : GraphBase
         }
     }
 
-    public override void AddEdge(int v1, int v2, int weight)
+    public override void AddEdge(int v1, int v2, int weight = 1)
     {
         if (v1 >= NumVertices || v2 >= NumVertices || v1 < 0 || v2 < 0)
             throw new ArgumentOutOfRangeException("Vertices are out of bounds");
