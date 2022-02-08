@@ -4,10 +4,10 @@ namespace Graph_Search.GraphObjects;
 
 public abstract class GraphBase
 {
-    public readonly int NumVertices;
-    public readonly bool Directed;
+    protected readonly int NumVertices;
+    protected readonly bool Directed;
 
-    public GraphBase(int numVertices, bool directed = false)
+    protected GraphBase(int numVertices, bool directed = false)
     {
         NumVertices = numVertices;
         Directed = directed;
