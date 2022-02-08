@@ -29,11 +29,13 @@ public class BreathFirstSearch
         {
             start = queue.Dequeue();
 
+            
             if (!markedNodes.Contains(start))
             {
                 markedNodes.Add(start);
                 Graph.MarkVertex(start);
-
+                Console.Write($"{start} -> ");
+                
                 amountOfVisits++;
 
                 foreach (var vertex in Graph.GetAdjacentVertices(start))
@@ -44,7 +46,8 @@ public class BreathFirstSearch
             }
         }
         
-        Console.WriteLine(amountOfVisits);
+        Console.WriteLine("Done");
+        Console.WriteLine($"Took {amountOfVisits} steps");
         
         return markedNodes;
     }
