@@ -19,6 +19,11 @@ public abstract class GraphBase
 
     public abstract int GetEdgeWeight(int v1, int v2);
 
+    public virtual int GetNumberOfVertices()
+    {
+        return NumVertices;
+    }
+
     public virtual void Display()
     {
         Console.WriteLine(Directed ? "Directed Graph:" : "Undirected Graph:");

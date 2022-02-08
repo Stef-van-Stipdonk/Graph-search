@@ -40,4 +40,9 @@ public class AdjacencySetGraph : GraphBase
     {
         return 1;
     }
+
+    public void MarkVertex(int v)
+    {
+        VertexSet.ElementAt(v).SetVisited(true);
+    }
 }

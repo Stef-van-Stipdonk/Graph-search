@@ -4,6 +4,7 @@ public class Node
 {
     private readonly int Vertex;
     private readonly HashSet<int> AdjacencySet;
+    private bool HasBeenVisited = false;
 
     public Node(int vertex)
     {
@@ -22,5 +23,15 @@ public class Node
     public HashSet<int> GetAdjacentVertices()
     {
         return AdjacencySet;
+    }
+
+    public void SetVisited(bool status)
+    {
+        HasBeenVisited = status;
+    }
+
+    public bool WasVisited()
+    {
+        return HasBeenVisited;
     }
 }
