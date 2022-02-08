@@ -13,42 +13,43 @@ public class BreathFirstSearch
         Graph = graph;
     }
 
-    public IEnumerable<int> GetFastestPath(int start, int end)
+    public IEnumerable<int> GetFastestPath(int startVertex, int endVertex)
     {
-        if (start >= Graph.GetNumberOfVertices() || end >= Graph.GetNumberOfVertices() || start < 0 || end < 0)
-            throw new ArgumentException("start or end not in bounds of vertices");
+        if (startVertex >= Graph.GetNumberOfVertices() || endVertex >= Graph.GetNumberOfVertices() || startVertex < 0 || endVertex < 0)
+            throw new ArgumentException("startVertex or endVertex not in bounds of vertices");
         
-        var queue = new Queue<int>();
-        queue.Enqueue(start);
+        var nodesToVisitQueue = new Queue<int>();
+        nodesToVisitQueue.Enqueue(startVertex);
         
-        var markedNodes = new List<int>();
+        var visitedNodes = new List<int>();
 
-        var amountOfVisits = 0;
+        var stepsToEndNode = 0;
         
-        while (queue.Count > 0)
+        while (nodesToVisitQueue.Count > 0)
         {
-            start = queue.Dequeue();
+            startVertex = nodesToVisitQueue.Dequeue();
 
+            if (visitedNodes.Contains(startVertex)) continue;
             
-            if (!markedNodes.Contains(start))
-            {
-                markedNodes.Add(start);
-                Graph.MarkVertex(start);
-                Console.Write($"{start} -> ");
-                
-                amountOfVisits++;
+            visitedNodes.Add(startVertex);
+            
+            Console.Write($"{startVertex} -> ");
 
-                foreach (var vertex in Graph.GetAdjacentVertices(start))
-                {
-                    if (!markedNodes.Contains(vertex))
-                        queue.Enqueue(vertex);
-                }
+            stepsToEndNode++;
+
+            if (startVertex == endVertex)
+                break;
+
+            foreach (var vertex in Graph.GetAdjacentVertices(startVertex))
+            {
+                if (!visitedNodes.Contains(vertex))
+                    nodesToVisitQueue.Enqueue(vertex);
             }
         }
         
         Console.WriteLine("Done");
-        Console.WriteLine($"Took {amountOfVisits} steps");
+        Console.WriteLine($"Took {stepsToEndNode} steps");
         
-        return markedNodes;
+        return visitedNodes;
     }
 }

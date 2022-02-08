@@ -24,4 +24,4 @@ set.AddEdge(5, 6);
 
 var breathFirst = new BreathFirstSearch(set);
 
-var marked = breathFirst.GetFastestPath(0, 3).ToList();
+var marked = breathFirst.GetFastestPath(0, 4).ToList();
