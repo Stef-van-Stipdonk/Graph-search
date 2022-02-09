@@ -15,7 +15,6 @@ set.AddEdge(1, 6);
 
 set.AddEdge(2, 3);
 set.AddEdge(2, 6);
-set.AddEdge(2, 10);
 
 set.AddEdge(3, 6);
 set.AddEdge(3, 7);
@@ -25,10 +24,11 @@ set.AddEdge(4, 5);
 set.AddEdge(4, 9);
 
 set.AddEdge(5, 6);
+set.AddEdge(5, 9);
 
 set.AddEdge(6, 8);
+set.AddEdge(6, 9);
 
-set.AddEdge(7, 9);
 set.AddEdge(7, 8);
 
 var breathFirst = new BreathFirstSearch(set);
