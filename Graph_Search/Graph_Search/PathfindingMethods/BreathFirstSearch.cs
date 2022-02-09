@@ -39,7 +39,9 @@ public class BreathFirstSearch
                 {
                     nodesToVisitQueue.Enqueue(vertex);
                     visitedNodes.Add(currVertex);
-                    prevArray[vertex] = currVertex;
+                    
+                    if(prevArray[vertex] == null)
+                        prevArray[vertex] = currVertex;
                 }
             }
         }
