@@ -4,7 +4,7 @@ namespace Graph_Search;
 
 public class AdjacencyMatrixGraph : GraphBase
 {
-    private int[,] Matrix;
+    private int[,] Matrix { get; set; }
 
     public AdjacencyMatrixGraph(int numVertices, bool directed = false) : base(numVertices, directed)
     {

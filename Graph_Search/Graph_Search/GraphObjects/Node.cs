@@ -5,6 +5,7 @@ public class Node
     private readonly int Vertex;
     private readonly HashSet<int> AdjacencySet;
     private bool HasBeenVisited = false;
+    private int CostToReach { get; set; }
 
     public Node(int vertex)
     {
@@ -34,4 +35,15 @@ public class Node
     {
         return HasBeenVisited;
     }
+
+    public void SetCostToReach(int cost)
+    {
+        CostToReach = cost;
+    }
+
+    public int GetCostToReach()
+    {
+        return CostToReach;
+    }
+
 }

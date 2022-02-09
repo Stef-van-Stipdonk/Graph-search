@@ -4,7 +4,7 @@ namespace Graph_Search;
 
 public class AdjacencySetGraph : GraphBase
 {
-    private HashSet<Node> VertexSet;
+    private HashSet<Node> VertexSet { get; }
 
     public AdjacencySetGraph(int numVertices, bool directed = false) : base(numVertices, directed)
     {
@@ -44,5 +44,15 @@ public class AdjacencySetGraph : GraphBase
     public void MarkVertex(int v)
     {
         VertexSet.ElementAt(v).SetVisited(true);
+    }
+
+    public void SetCostToReach(int v, int cost)
+    {
+        VertexSet.ElementAt(v).SetCostToReach(cost);
+    }
+
+    public void GetCostToReach(int v)
+    {
+        VertexSet.ElementAt(v).GetCostToReach();
     }
 }
