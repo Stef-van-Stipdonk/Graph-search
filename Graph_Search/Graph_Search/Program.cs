@@ -24,4 +24,9 @@ set.AddEdge(5, 6);
 
 var breathFirst = new BreathFirstSearch(set);
 
-var marked = breathFirst.GetFastestPath(0, 6).ToList();
+var marked = breathFirst.GetFastestPath(0, 7).ToList();
+
+foreach (int node in marked)
+{
+    Console.WriteLine(node);
+}

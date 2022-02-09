@@ -22,34 +22,40 @@ public class BreathFirstSearch
         nodesToVisitQueue.Enqueue(startVertex);
         
         var visitedNodes = new List<int>();
-
-        var stepsToEndNode = 0;
+        visitedNodes.Add(startVertex);
+        
+        int?[] prevArray = new int?[Graph.GetNumberOfVertices()];
         
         while (nodesToVisitQueue.Count > 0)
         {
-            startVertex = nodesToVisitQueue.Dequeue();
-
-            if (visitedNodes.Contains(startVertex)) continue;
+            var currVertex = nodesToVisitQueue.Dequeue();
             
-            visitedNodes.Add(startVertex);
-            
-            Console.Write($"{startVertex} -> ");
-
-            stepsToEndNode++;
-
-            if (startVertex == endVertex)
+            if (currVertex == endVertex)
                 break;
 
-            foreach (var vertex in Graph.GetAdjacentVertices(startVertex))
+            foreach (var vertex in Graph.GetAdjacentVertices(currVertex))
             {
                 if (!visitedNodes.Contains(vertex))
+                {
                     nodesToVisitQueue.Enqueue(vertex);
+                    visitedNodes.Add(currVertex);
+                    prevArray[vertex] = currVertex;
+                }
             }
         }
+
+        var path = new List<int>();
+
+        for (int? i = endVertex; i != null; i = prevArray[(Index)i])
+        {
+            path.Add((int)i);
+        }
+
+        path.Reverse();
+
+        if (path[0] == startVertex)
+            return path;
         
-        Console.WriteLine("Done");
-        Console.WriteLine($"Took {stepsToEndNode} steps");
-        
-        return visitedNodes;
+        return new List<int>();
     }
 }
