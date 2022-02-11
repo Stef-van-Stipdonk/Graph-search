@@ -33,7 +33,7 @@ set.AddEdge(7, 8);
 
 var breathFirst = new BreathFirstSearch(set);
 
-var marked = breathFirst.GetFastestPath(0, 7).ToList();
+var marked = breathFirst.GetFastestPath(0, 8).ToList();
 
 foreach (int node in marked)
 {
